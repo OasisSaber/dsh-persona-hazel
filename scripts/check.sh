@@ -6,7 +6,7 @@ cd "$(dirname "$0")/.."
 
 fail=0
 
-# 1) 插件语法
+# 1) 插件语法（node 缺失视为失败——与 check.ps1 委托语义一致，不跳过）
 if command -v node >/dev/null 2>&1; then
   if node --check plugin/dsh-persona-hazel/index.js; then
     echo "ok: plugin syntax"
@@ -15,14 +15,16 @@ if command -v node >/dev/null 2>&1; then
     fail=1
   fi
 else
-  echo "skip: node not found"
+  echo "FAIL: node not found (required for plugin syntax check)"
+  fail=1
 fi
 
-# 2) 人设卡同步一致性（soul-card.md 与插件 persona.txt 必须一致）
-if cmp -s persona/soul-card.md plugin/dsh-persona-hazel/persona.txt; then
-  echo "ok: persona.txt in sync with soul-card.md"
+# 2) 人设卡同步一致性（soul-card.md、haze-persona.txt、插件 persona.txt 三者必须一致）
+if cmp -s persona/soul-card.md plugin/dsh-persona-hazel/persona.txt \
+  && cmp -s persona/soul-card.md persona/haze-persona.txt; then
+  echo "ok: persona.txt and haze-persona.txt in sync with soul-card.md"
 else
-  echo "FAIL: plugin persona.txt differs from persona/soul-card.md (run deploy.ps1)"
+  echo "FAIL: plugin persona.txt or haze-persona.txt differs from persona/soul-card.md (run deploy.ps1; resync haze-persona.txt)"
   fail=1
 fi
 

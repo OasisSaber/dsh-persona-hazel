@@ -6,7 +6,7 @@
 
 - `persona/` 是人格数据的**唯一事实来源**：
   - `persona/soul-card.md` — **部署源**：soul.md 风格全局人设卡（当前生效版本），deploy.ps1 同步为 `plugin/dsh-persona-hazel/persona.txt`
-  - `persona/haze-persona.txt` — 蒸馏文本 V3 完整版存档（同源、同内容核心；如需改人格，两处应同步演进）
+  - `persona/haze-persona.txt` — soul-card.md 的纯文本镜像（完整版存档；check.sh/check.ps1 强制与 soul-card.md 字节一致，改人格只改 soul-card.md 再同步）
   - `persona/` 子目录（core/behavior/speech/world）是 Hzm-AI-Bot 原始蒸馏 JSON，只读参照，不要当注入口改
 - 运行时副本：`plugin\dsh-persona-hazel\persona.txt`（由 deploy.ps1 从 soul-card.md 单向同步，不要直接改）
 

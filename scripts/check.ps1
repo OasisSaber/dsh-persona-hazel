@@ -12,11 +12,14 @@ try {
   node --check 'plugin\dsh-persona-hazel\index.js'
   Write-Output 'ok: plugin syntax'
 
-  # 2) 人设卡同步一致性
-  $a = (Get-FileHash 'persona\soul-card.md' -Algorithm SHA256).Hash
-  $b = (Get-FileHash 'plugin\dsh-persona-hazel\persona.txt' -Algorithm SHA256).Hash
-  if ($a -ne $b) { throw 'plugin persona.txt differs from persona/soul-card.md (run deploy.ps1)' }
-  Write-Output 'ok: persona.txt in sync with soul-card.md'
+  # 2) 人设卡同步一致性（soul-card.md、haze-persona.txt、插件 persona.txt 三者一致）
+  $card = (Get-FileHash 'persona\soul-card.md' -Algorithm SHA256).Hash
+  $plugin = (Get-FileHash 'plugin\dsh-persona-hazel\persona.txt' -Algorithm SHA256).Hash
+  $archive = (Get-FileHash 'persona\haze-persona.txt' -Algorithm SHA256).Hash
+  if ($card -ne $plugin -or $card -ne $archive) {
+    throw 'plugin persona.txt or haze-persona.txt differs from persona/soul-card.md (run deploy.ps1; resync haze-persona.txt)'
+  }
+  Write-Output 'ok: persona.txt and haze-persona.txt in sync with soul-card.md'
 
   # 3) 人格锚点（PS 5.1 必须显式 UTF8，默认按 ANSI 读会乱码）
   $card = Get-Content 'persona\soul-card.md' -Raw -Encoding UTF8

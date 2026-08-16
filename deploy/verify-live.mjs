@@ -1,7 +1,11 @@
-// verify-live.mjs — dsh-persona-hazel 插件端到端验证（2026-08-16）
+// verify-live.mjs — dsh-persona-hazel 插件端到端验证（唯一端到端入口，见 DSH-WORKSPACE.md）
 // 用法: node deploy\verify-live.mjs [baseUrl] [agentPreset]
 // 流程: 创建会话（默认 agentPreset=router-flash）→ 提问"你是谁" → 轮询 history 取模型回复。
 // 期望: 回复含"风纪委员"/"灰泽满"等（hazel:soul 区段生效，绕过 router 过滤）。
+// cwd 由脚本位置推导仓库根，不依赖本机绝对路径。
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const BASE = process.argv[2] ?? 'http://127.0.0.1:10726';
 const PRESET = process.argv[3] ?? 'router-flash';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -19,7 +23,7 @@ async function rpc(method, payload) {
   return json.result.value;
 }
 (async () => {
-  const created = await rpc('session.create', { cwd: 'D:\\Project\\LocalProject\\HazePersona', agentPreset: PRESET });
+  const created = await rpc('session.create', { cwd: REPO_ROOT, agentPreset: PRESET });
   const sid = created.sessionId;
   console.log('session:', sid, '| preset:', created.agentPreset);
   await rpc('session.prompt', {

@@ -11,7 +11,7 @@ HazePersona/
 ├── deploy.ps1                # 部署/同步脚本（插件方案）
 ├── persona/                  # ★ 人格数据源（唯一事实来源）
 │   ├── soul-card.md          #   部署源：soul.md 风格全局人设卡（当前生效版本）
-│   ├── haze-persona.txt      #   蒸馏文本 V3（完整版存档，与 soul-card 同源）
+│   ├── haze-persona.txt      #   soul-card.md 的纯文本镜像（完整版存档，check 强制一致）
 │   ├── core/                 #   源数据：system_prompt.txt(V2草案) / traits / styles
 │   ├── behavior/             #   behaviors.json（8 条行为模式）
 │   ├── speech/               #   phrases.json（11 组措辞指纹）/ voice_samples.json（83 个声音样本）
@@ -22,8 +22,7 @@ HazePersona/
 │   └── package.json / README.md
 └── docs/
     ├── README.md             # Hzm-AI-Bot 原 README
-    ├── ROADMAP.md            # Hzm-AI-Bot 重构历程与踩坑记录
-    └── persona-resound/      # 方法论 skill 全套（SKILL.md + references/ + template/）
+    └── ROADMAP.md            # Hzm-AI-Bot 重构历程与踩坑记录
 ```
 
 > 注：Hzm-AI-Bot 的 `*_vectors.json`（预计算向量）未随库保留——那是原工程检索层产物，DSH 静态人格注入用不到，需要时可从原仓库重跑 `precompute` 生成。
@@ -52,7 +51,8 @@ HazePersona/
 ### 验证
 
 - 静态：`persona.txt` 关键锚点齐备（"永远16岁的风纪委员"、"绿冻永远是灰泽满的第二选择"等）；patch 行 + junction + link 条目三处就位。
-- 运行时（2026-08-16 曾以 haze 预设端到端验证）：建会话问"你是谁"，模型回复 **"是永远16岁的风纪委员哦。"**。插件版请重启后新会话复测（默认 router-flash 会话即可）。
+- 运行时端到端（唯一入口）：`node deploy\verify-live.mjs`（对运行中的 DSH web 建会话提问，默认 router-flash 预设；cwd 由脚本位置推导，换机可用）。
+- 运行时历史（2026-08-16 曾以 haze 预设端到端验证）：建会话问"你是谁"，模型回复 **"是永远16岁的风纪委员哦。"**。插件版请重启后新会话复测（默认 router-flash 会话即可）。
 
 ## 人格数据来源与蒸馏说明
 
