@@ -16,6 +16,7 @@ Thumbs.db
 # jj & themasterplan internals
 .jj/
 .themasterplan/cache/
+.themasterplan/state.json
 
 # python bytecode
 __pycache__/
