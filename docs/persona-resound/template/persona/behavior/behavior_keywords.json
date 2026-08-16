@@ -1,0 +1,3 @@
+{
+  "_readme": "行为判别词：用户消息含这些词 → 强制命中对应行为（语义检索对'敷衍/骗/鸽'这类口语有~0.55天花板且易错配，判别词是确定性兜底）。行为名必须与 persona/behavior/behaviors.json 的 name 一致。通用判别词参考：敷衍/骗/迟到/鸽/擦边/低俗。示例见 Hzm-AI-Bot 的 persona/behavior/behavior_keywords.json。改后重启生效。"
+}

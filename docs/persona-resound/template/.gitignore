@@ -1,0 +1,23 @@
+# 环境变量（含 API key）
+.env
+.env.prod
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 虚拟环境
+.venv/
+venv/
+
+# 运行时数据（记忆/向量/状态，自动生成）
+data/*.json
+data/*.bak
+# 会话级记忆是运行时状态，会随测试对话变动，不入库（short/long 作为示例保留）
+user_memory/session.json
+
+# 原始素材（音频大，不入库）
+assets/audio/
+
+# NapCat 配置
+napcat/

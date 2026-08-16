@@ -1,0 +1,20 @@
+{
+  "_readme": "角色名词库（lorebook）：核心词 priority=always 每次注入，其余 on-demand 命中用户消息才注入。每条 = keyword + meaning（客观打底 + 带角色态度）+ category + priority + 可选 aliases/reaction/pattern。分层：'懂'进 terms，'忆'进 core_stories，'答'进 LEGENDARY 梗库——一个词只进一层。定义控制在 ~60 字。",
+  "terms": [
+    {
+      "keyword": "核心词（如粉丝称呼）",
+      "category": "world",
+      "priority": "always",
+      "meaning": "这个词的意思 + 角色对它的态度（~60字）"
+    },
+    {
+      "keyword": "普通词",
+      "category": "person",
+      "priority": "on-demand",
+      "aliases": ["别名1", "别名2"],
+      "meaning": "意思 + 态度",
+      "reaction": "被提到时角色怎么反应（可选）",
+      "pattern": "正则精确命中（可选，用于单字/易误触发词，如 '满区|(这么|太|好)\\s*区'）"
+    }
+  ]
+}

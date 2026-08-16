@@ -1,0 +1,5 @@
+{
+  "_readme": "经典梗库（'答'进 LEGENDARY）：用户消息命中关键词，回固定原话（不经检索）。梗的原话必须来自素材，不编造。宽泛关键词配 confirms 的 LLM 语境确认防误触发。格式：replies = {关键词: [候选回复]}, confirms = {关键词: 确认prompt}。示例见 Hzm-AI-Bot 的 persona/world/legendary.json。改后重启生效。",
+  "replies": {},
+  "confirms": {}
+}

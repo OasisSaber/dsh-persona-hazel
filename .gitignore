@@ -1,0 +1,22 @@
+# dependencies — never commit
+node_modules/
+
+# logs & temp
+*.log
+.DS_Store
+Thumbs.db
+*.tmp
+
+# local env
+.env
+.env.local
+.env.dev
+.env.prod
+
+# jj & themasterplan internals
+.jj/
+.themasterplan/cache/
+
+# python bytecode
+__pycache__/
+*.pyc

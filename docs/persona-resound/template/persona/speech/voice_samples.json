@@ -1,0 +1,12 @@
+{
+  "_readme": "说话示范库（few-shot）：大量真实对话对（user + reply），是唯一的风格示范层。模型照这里学语气/断句/自称/措辞。改完跑 run_tool precompute voice-samples。设计铁律：①user 描述精确限定触发语境（过泛会误命中）；②分 short/long 档，注入优先 short；③每条 reply 必须是角色真实原话，不改写。",
+  "samples": [
+    {
+      "id": "sample_1",
+      "type": "daily",
+      "length": "short",
+      "user": "粉丝问：……（触发这条样本的真实情境）",
+      "reply": "角色当时的真实回答（原话）"
+    }
+  ]
+}

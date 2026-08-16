@@ -1,0 +1,29 @@
+﻿# TheMasterplan 权威验证入口（PowerShell 委托）— HazePersona
+# 委托同一权威命令语义，不维护第二套验证规则。
+$ErrorActionPreference = 'Stop'
+$root = Split-Path -Parent $MyInvocation.MyCommand.Path | Split-Path -Parent
+Push-Location $root
+try {
+  if (-not (Test-Path '.git' -PathType Container) -and -not (Test-Path '.jj' -PathType Container)) {
+    throw 'not a repository root'
+  }
+
+  # 1) 插件语法
+  node --check 'plugin\dsh-persona-hazel\index.js'
+  Write-Output 'ok: plugin syntax'
+
+  # 2) 人设卡同步一致性
+  $a = (Get-FileHash 'persona\soul-card.md' -Algorithm SHA256).Hash
+  $b = (Get-FileHash 'plugin\dsh-persona-hazel\persona.txt' -Algorithm SHA256).Hash
+  if ($a -ne $b) { throw 'plugin persona.txt differs from persona/soul-card.md (run deploy.ps1)' }
+  Write-Output 'ok: persona.txt in sync with soul-card.md'
+
+  # 3) 人格锚点（PS 5.1 必须显式 UTF8，默认按 ANSI 读会乱码）
+  $card = Get-Content 'persona\soul-card.md' -Raw -Encoding UTF8
+  if (-not $card.Contains('永远16岁的风纪委员')) { throw 'persona anchors missing' }
+  Write-Output 'ok: persona anchors present'
+
+  Write-Output 'all checks passed'
+} finally {
+  Pop-Location
+}

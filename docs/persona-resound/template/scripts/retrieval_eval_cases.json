@@ -1,0 +1,4 @@
+{
+  "_readme": "检索层评测标注集（空模板）。每条 = query + 对各路的期望：should=期望命中的 id（对应 voice_samples/phrases/preferences/core_stories 里的 id 或 behaviors 名），should_not_hit=该路应不命中，contains=返回文本应含的关键词。按你的角色建标注：挑代表性 query（被夸/被质疑/指代话题/纯情绪等），写清楚哪路该命中什么。跑法：python scripts/retrieval_eval.py",
+  "cases": []
+}
