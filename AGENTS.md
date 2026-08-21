@@ -61,6 +61,7 @@ TheMasterplan；不运行更新检测，不修改外部工作流状态。
   ```
 - 合并方式：只接受人类决定的 Squash Merge
 - 部署与人格维护：见 [DSH-WORKSPACE.md](DSH-WORKSPACE.md)（DSH 挂载、deploy.ps1、人设卡修改流程、双注入禁忌）
+- Codex 人格部署：codex-keysmith 路线把 `persona/soul-card.md` 部署为 Windows Codex 全局指令（`model_instructions_file`），手册与红线见 [docs/codex-deployment.md](docs/codex-deployment.md)；2026-08-21 生产 active，DSH 侧插件不受影响
 - 数据来源与许可：见 [README.md](README.md) 与 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)
 
 ## 任务路径
