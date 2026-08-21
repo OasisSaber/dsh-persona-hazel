@@ -71,9 +71,11 @@ HazePersona/
 
 ## 数据来源与许可
 
-- 本项目以 **MIT** 许可证发布（见 [LICENSE](LICENSE)）。
-- 人格数据蒸馏自 [Hzm-AI-Bot](https://github.com/MureasAm/Hzm-AI-Bot)（MIT, © 2026 MureasAm），方法论来自 [persona-resound](https://github.com/MureasAm/persona-resound)（MIT, © 2026 MureasAm），插件实现范式参考 [dsh-soul-md](https://github.com/Scorp1o117/dsh-soul-md)（MIT, © 2026 Scorp1o117）。
-- 完整的上游版权声明见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+- 本项目自行编写的代码、DSH 适配实现及其他原创工程内容采用 **MIT License**（见 [LICENSE](LICENSE)）。
+- 从 [Hzm-AI-Bot](https://github.com/MureasAm/Hzm-AI-Bot)、[persona-resound](https://github.com/MureasAm/persona-resound)、[dsh-soul-md](https://github.com/Scorp1o117/dsh-soul-md) 及 [TheMasterplan](https://github.com/OasisSaber/TheMasterplan) 取得或参考的内容，继续遵循其原始许可证，并保留 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) 中的版权声明。
+- 本仓库的 MIT License 不构成对“灰泽满 Hazel”角色、身份、名称、商标、直播内容、录音录像、原始发言或其他底层第三方知识产权的授权。
+- 本项目是非官方、非商业的粉丝人格模拟项目；生成内容属于 AI 模拟结果，不代表灰泽满本人真实发表的言论，也不构成其本人、管理团队、经纪机构或其他权利人的官方授权、隶属、背书或赞助。
+- 详细的人格、角色/IP 与内容权利边界见 [PERSONA-NOTICE.md](PERSONA-NOTICE.md)。
 
 ## 相关链接
 
